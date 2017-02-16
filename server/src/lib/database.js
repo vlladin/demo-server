@@ -1,6 +1,4 @@
-import UserModel from '../model/user.js';
 import low from 'lowdb';
-import uuidV4 from 'uuid/v4';
 
 class Database{
     constructor(){
@@ -10,28 +8,9 @@ class Database{
     }
 
     createUser(data){
-        if(!data.username || !data.password || !data.role || !data.info){
-            return {"status": 1};
-        }
-
-        let existingCheck = this.db
-            .get('users')
-            .find({username: data.username})
-            .value();
-
-        if(existingCheck){
-            return {"status": 2};
-        }
-
-        let user = new UserModel();
-        user.id = uuidV4();
-        user.username = data.username;
-        user.password = data.password;
-        user.role = data.role;
-        user.info = data.info;
         this.db
             .get('users')
-            .push(user)
+            .push(data)
             .write();
         return {"status": 0};
     }
