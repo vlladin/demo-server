@@ -1,0 +1,245 @@
+<html>
+<head>
+    <title>Api doc</title>
+    <style>
+
+        .endpoint {
+            background-color: whitesmoke;
+            border: 1px solid #d4d4d4;
+            padding: 15px;
+            margin: 15px;
+        }
+
+        .info1 {
+            display: flex;
+
+        }
+
+        .verb {
+            color: white;
+            font-weight: 800;
+            background-color: rgb(0, 0, 0);
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .path {
+            margin-left: 10px;
+            padding: 5px 5px 0px;
+            border-bottom-style: groove;
+            font-size: 18px;
+        }
+
+        .description {
+            margin-left: 30px;
+            margin-top: 10px;
+            color: #909090;
+        }
+
+        .param {
+            margin-left: 50px;
+            margin-top: 5px;
+            display: flex;
+        }
+
+        .param-name {
+            border-bottom-style: groove;
+            margin-left: 10px;
+        }
+
+        .param-info {
+            margin-left: 10px;
+        }
+
+        .tag {
+            margin-left: 30px;
+            margin-top: 25px;
+            color: black;
+            font-weight: 800;
+            background-color: rgb(218, 218, 218);
+            padding: 3px;
+            font-size: 14px;
+            width: 45px;
+        }
+
+        .http-code-ok {
+            background-color: #689F38;
+            color: white;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        .http-code-err {
+            background-color: #D32F2F;
+            color: white;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="endpoint">
+    <div class="info1">
+        <div class="verb">GET</div>
+        <div class="path">/users</div>
+    </div>
+    <div class="description">Get all users</div>
+
+    <div class="tag">headers</div>
+    <div class="param">auth: token</div>
+
+    <div class="tag">returns</div>
+    <div class="param">
+        <div class="http-code-ok">200</div>
+        <div class="param-name">UserModel [ ]</div>
+        <div class="param-info">A list of UserModel</div>
+    </div>
+    <div class="param">
+        <div class="http-code-err">401</div>
+        <div class="param-info">Unauthorised</div>
+    </div>
+    <div class="param">
+        <div class="http-code-err">403</div>
+        <div class="param-info">Forbidden</div>
+    </div>
+</div>
+
+<div class="endpoint">
+    <div class="info1">
+        <div class="verb">GET</div>
+        <div class="path">/user/:id</div>
+    </div>
+    <div class="description">Gets a user by id</div>
+    <div class="tag">headers</div>
+    <div class="param">auth: token
+    </div>
+    <div class="tag">params</div>
+    <div class="param">
+        <div class="param-name">id</div>
+        <div class="param-info">the user's id</div>
+    </div>
+
+    <div class="tag">returns</div>
+    <div class="param">
+        <div class="http-code-ok">200</div>
+        <div class="param-name">UserModel</div>
+        <div class="param-info">the user's id</div>
+    </div>
+    <div class="param">
+        <div class="http-code-err">401</div>
+        <div class="param-info">Unauthorised</div>
+    </div>
+    <div class="param">
+        <div class="http-code-err">403</div>
+        <div class="param-info">Forbidden</div>
+    </div>
+</div>
+
+<div class="endpoint">
+    <div class="info1">
+        <div class="verb">POST</div>
+        <div class="path">/user/create</div>
+    </div>
+    <div class="description">Create a new user</div>
+    <div class="tag">params</div>
+    <div class="param">
+        <div class="param-name">{</div>
+        <div class="param-info"></div>
+    </div>
+    <div class="param">
+        <div class="param-name">username</div>
+        <div class="param-info">the user's username</div>
+    </div>
+    <div class="param">
+        <div class="param-name">password</div>
+        <div class="param-info">the user's password</div>
+    </div>
+    <div class="param">
+        <div class="param-name">role</div>
+        <div class="param-info">the user's role</div>
+    </div>
+    <div class="param">
+        <div class="param-name">}</div>
+        <div class="param-info"></div>
+    </div>
+
+    <div class="tag">returns</div>
+    <div class="param">
+        <div class="http-code-ok">200</div>
+        <div class="param-info">Success</div>
+    </div>
+
+    <div class="param">
+        <div class="http-code-err">400</div>
+        <div class="param-info">Parameters missing</div>
+    </div>
+    <div class="param">
+        <div class="http-code-err">409</div>
+        <div class="param-info">Username taken</div>
+    </div>
+
+</div>
+
+<div class="endpoint">
+    <div class="info1">
+        <div class="verb">POST</div>
+        <div class="path">/authenticate</div>
+    </div>
+    <div class="description">Authenticate a user</div>
+    <div class="tag">params</div>
+    <div class="param">
+        <div class="param-name">{</div>
+        <div class="param-info"></div>
+    </div>
+    <div class="param">
+        <div class="param-name">username</div>
+        <div class="param-info">the user's username</div>
+    </div>
+    <div class="param">
+        <div class="param-name">password</div>
+        <div class="param-info">the user's password</div>
+    </div>
+    <div class="param">
+        <div class="param-name">}</div>
+        <div class="param-info"></div>
+    </div>
+
+    <div class="tag">returns</div>
+    <div class="param">
+        <div class="http-code-ok">200</div>
+        <div class="param-name">session</div>
+        <div class="param-info">user's session</div>
+    </div>
+
+    <div class="param">
+        <div class="http-code-err">400</div>
+        <div class="param-info">Bad request / auth fail</div>
+    </div>
+
+</div>
+
+<div class="endpoint">
+    <div class="info1">
+        <div class="verb">GET</div>
+        <div class="path">/logout</div>
+    </div>
+    <div class="description">Logout current user</div>
+    <div class="tag">headers</div>
+    <div class="param">auth: token</div>
+
+    <div class="tag">returns</div>
+    <div class="param">
+        <div class="http-code-ok">200</div>
+    </div>
+    <div class="param">
+        <div class="http-code-err">401</div>
+        <div class="param-info">Unauthorised</div>
+    </div>
+    <div class="param">
+        <div class="http-code-err">403</div>
+        <div class="param-info">Forbidden</div>
+    </div>
+</div>
+
+</body>
+</html>
